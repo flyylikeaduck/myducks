@@ -1,13 +1,12 @@
-# Project Name
+# Safety Buddies
 
-> Pithy project description
+> Realtime safety notifications for those that you love
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Bernard Kitchens
+  - Mykola Radchenko
+  - Rebecca Chen
 
 ## Table of Contents
 
@@ -45,7 +44,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](https://docs.google.com/document/d/11H4AJJSHFkicGSeI_vp_jbuuCJhsyckmhVpw27HWNwE/edit?usp=sharing)
 
 
 ## Contributing
