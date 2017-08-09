@@ -1,15 +1,29 @@
 {
-  "name": "",
-  "version": "",
+  "name": "myducks-safety-buddy",
+  "version": "1.0.0",
   "description": "",
-  "author": "",
+  "main": "index.js",
+  "author": "Bernard Kitchens, Mykola Radchenko, Rebecca Chen",
   "license": "",
   "engines": {
     "node": ">=6.4.0"
   },
   "scripts": {
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js"
   },
   "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "jquery": "^3.2.1",
+    "mongoose": "^4.11.6",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.2",
+    "react-dom": "^15.6.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "webpack": "^3.5.1"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
