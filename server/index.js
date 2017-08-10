@@ -8,7 +8,7 @@ let port = 3000;
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/', (req, res) => {
-  res.send('Hello');
+  res.send();
 });
 
 app.post('/event', (req, res) => {
