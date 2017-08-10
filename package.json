@@ -21,6 +21,8 @@
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
+    "react-google-map": "^3.0.1",
+    "react-google-maps": "^6.3.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "webpack": "^3.5.1"
