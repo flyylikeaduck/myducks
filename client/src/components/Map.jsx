@@ -6,8 +6,8 @@ import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={15}
-    defaultCenter={{ lat: 37.784415, lng: -122.435033 }}
+    defaultZoom={17}
+    defaultCenter={{ lat: 37.783697, lng: -122.408966 }}  //HR Long/Lat coords:  37.783697, -122.408966
     onClick={props.onMapClick}
   >
   {/* {props.markers.map((marker, index) => (
@@ -18,6 +18,8 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
     ))} */}
   </GoogleMap>
 ));
+
+
 
 class Map extends React.Component {
   constructor(props) {
@@ -39,8 +41,8 @@ class Map extends React.Component {
         }
         //onMapLoad={_.noop}
         //onMapClick={_.noop}
-      //  markers={markers}
-        //onMarkerRightClick={_.noop}
+       //  markers={markers}
+        //onMarkerRightClick={_.noop} 
       />
     );
   }
