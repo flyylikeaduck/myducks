@@ -6,15 +6,24 @@ const sequelize = new Sequelize('mysql', 'root', '',   {
   port: 3306
 });
 
-
 // creates 'Users' table
-var User = sequelize.define('User', {
+const User = sequelize.define('user', {
   username: Sequelize.STRING,
   address: Sequelize.STRING,
   phone: Sequelize.STRING
 });
 
+var Event = sequelize.define('event', {
+  description: Sequelize.STRING,
+  lat: Sequelize.INTEGER,
+  lng: Sequelize.INTEGER
+})
+
+// adds foreign key to Event
+User.hasMany(Event);
+
 // sequelize automatically adds id, createdAt, and updatedAt cols
+
 
 sequelize
   .authenticate()
@@ -34,3 +43,6 @@ sequelize
     console.log('An err occurred while creating the table:', err);
   });
 
+module.exports = {
+
+}
