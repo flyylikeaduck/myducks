@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('mysql', 'root', '',   {
+const sequelize = new Sequelize('mysql', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   port: 3306
@@ -34,7 +34,7 @@ sequelize
 
 sequelize
   // {force: true} drops Users table & re-creates it
-  .sync({force: true})
+  .sync({force: true}) // sqlz look over all models defined and gen sql querys under the hood that will turn creates associated tables
   .then(function(err) {
     console.log('it worked');
   }, function(err) {
@@ -44,5 +44,5 @@ sequelize
 const saveUser = function(username, )
 
 module.exports = {
-
+  User
 }
