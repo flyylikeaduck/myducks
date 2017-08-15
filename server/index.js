@@ -1,9 +1,8 @@
 const express = require('express');
 const db = require('../database/index.js');
 const bodyParser = require('body-parser');
-// const twilio = require('./helpers/twilio.js');
+const twilio = require('./helpers/twilio.js');
 const checkMysql = require('../database/checkMysql.js');
-//Create instance of express
 
 let app = express();
 
