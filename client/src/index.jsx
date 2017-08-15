@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Map from './components/Map.jsx';
-
+import BuddyForm from './components/BuddyForm.jsx';
+import SignUpForm from './components/SignUpForm.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,13 +10,24 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div>
-      <h1>
+    return (
+    <div>
+      <div id='pagetitle'>
+        SafetyBuddy
+      </div>
+      <div>
+       <SignUpForm/>
+      </div>
+      <div>
         <Map/>
-      </h1>
-      
-    </div>)
+      </div>
+      <div>
+        <BuddyForm/>
+      </div>
+    </div>
+    );
   }
 }
+  
 
 ReactDOM.render(<App/>, document.getElementById('index'));
