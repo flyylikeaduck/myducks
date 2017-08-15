@@ -4,10 +4,10 @@ export default class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
+      username: '',
       address: '',
       phoneNumber: '',
-      passWord: ''
+      password: ''
     }
   }
 
@@ -28,28 +28,28 @@ export default class SignUpForm extends React.Component {
         <input 
           name="username"
           placeholder="Username" 
-          value={this.state.firstName} 
+          value={this.state.username} 
           onChange={e => this.change(e)}
         />
         <br/>
         <input 
           name="address"
           placeholder="Address" 
-          value={this.state.lastName} 
+          value={this.state.address} 
           onChange={e => this.change(e)}
         />
         <br/>
         <input 
           name="phoneNumber"
           placeholder="Phone Number" 
-          value={this.state.userName} 
+          value={this.state.phoneNumber} 
           onChange={e => this.change(e)}
         />
         <br/>
         <input 
           name="password"
           placeholder="Password" 
-          value={this.state.phoneNumber} 
+          value={this.state.password} 
           onChange={e => this.change(e)}
         />
         <br/>

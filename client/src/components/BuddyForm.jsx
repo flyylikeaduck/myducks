@@ -7,7 +7,6 @@ export default class BuddyForm extends React.Component {
       username: '',
       address: '',
       phoneNumber: '',
-      password: ''
     }
   }
 
@@ -43,13 +42,6 @@ export default class BuddyForm extends React.Component {
           name="phoneNumber"
           placeholder="Phone Number" 
           value={this.state.phoneNumber} 
-          onChange={e => this.change(e)}
-        />
-        <br/>
-        <input 
-          name="password"
-          placeholder="Password" 
-          value={this.state.password} 
           onChange={e => this.change(e)}
         />
         <br/>
