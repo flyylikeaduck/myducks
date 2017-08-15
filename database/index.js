@@ -1,10 +1,11 @@
+// const checkMysql = require('./checkMysql.js');
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('mysql', 'root', '', {
+const sequelize = new Sequelize('safety_buddies', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   port: 3306
-});
+}); 
 
 // creates 'Users' table
 // sequelize automatically adds id, createdAt, and updatedAt cols
@@ -32,6 +33,7 @@ sequelize
     console.log('Unable to connect with sequelize:', err);
   })
 
+  
 sequelize
   // {force: true} drops Users table & re-creates it
   .sync({force: true}) // sqlz look over all models defined and gen sql querys under the hood that will turn creates associated tables
@@ -41,8 +43,7 @@ sequelize
     console.log('An err occurred while creating the table:', err);
   });
 
-const saveUser = function(username, )
-
+// const saveUser = function(username);
 module.exports = {
-  User
+  
 }

@@ -1,8 +1,9 @@
 const express = require('express');
+const db = require('../database/index.js');
 const bodyParser = require('body-parser');
 const twilio = require('./helpers/twilio.js');
-const db = require('./database/index.js')
-//Create instance of express
+const checkMysql = require('../database/checkMysql.js');
+
 let app = express();
 
 let port = process.env.PORT || 3000;
