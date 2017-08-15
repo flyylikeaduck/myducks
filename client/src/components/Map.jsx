@@ -34,10 +34,10 @@ class Map extends React.Component {
     return (
       <GettingStartedGoogleMap
         containerElement={
-          <div style={{height: '500px'}} />
+          <div style={{height: '400px'}} />
         }
         mapElement={
-          <div style={{ height: '500px' }} />
+          <div style={{ height: '300px' }} />
         }
         //onMapLoad={_.noop}
         //onMapClick={_.noop}

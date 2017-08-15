@@ -1,9 +1,15 @@
 
+
 const credentials = require('../../config.js');
 const accountSid = credentials.twilio.accountSid;
 const authToken = credentials.twilio.authToken;
 const client = require('twilio')(accountSid, authToken);
 //Twilio credentials
+const credentials = require('../../config.js');
+//Twilio credentials
+const accountSid = credentials.twilio.accountSid;
+const authToken = credentials.twilio.authToken;
+
 
 function sendMessage(phones) {
   phones.forEach(phone => {
