@@ -13,7 +13,7 @@
     "server-dev": "nodemon server/index.js",
     "postinstall": "webpack -p",
     "start": "node server/index.js",
-    "build": "babel ./client/*.js"
+    "build": "babel ./client/*.js -d dist"
   },
   "dependencies": {
     "axios": "^0.16.2",
