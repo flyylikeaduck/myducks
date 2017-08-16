@@ -2,8 +2,10 @@ const express = require('express');
 const db = require('../database/index.js');
 const bodyParser = require('body-parser');
 const twilio = require('./helpers/twilio.js');
+
 const checkMysql = require('../database/checkMysql.js');
 
+//Create instance of express
 let app = express();
 
 let port = process.env.PORT || 3000;
@@ -16,7 +18,7 @@ app.post('/event', urlencodedParser, (req, res) => {
   let lat = req.query.latitude;
   let lng = req.query.longitude;
   let eventType = req.query.eventType;
-  
+
 });
 
 //Starts server and listens for request

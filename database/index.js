@@ -5,45 +5,77 @@ const sequelize = new Sequelize('safety_buddies', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   port: 3306
-}); 
+});
 
 // creates 'Users' table
 // sequelize automatically adds id, createdAt, and updatedAt cols
-const User = sequelize.define('user', {
-  username: Sequelize.STRING,
-  address: Sequelize.STRING,
-  phone: Sequelize.STRING
+let User = sequelize.define('user', {
+  username: {
+    type: Sequelize.STRING,
+    notEmpty: true,
+    allowNull: false,
+    unique: true
+  },
+  address: {
+    type: Sequelize.STRING
+  },
+  // may need email if we use OAUTH
+  // email: {
+  //   type: Sequelize.STRING,
+  //   validate: {
+  //     isEmail: true
+  //   }
+  // },
+  phone: {
+    type: Sequelize.STRING
+  }
 });
 
-var Event = sequelize.define('event', {
-  description: Sequelize.STRING,
-  lat: Sequelize.DECIMAL,
-  lng: Sequelize.DECIMAL
+let Event = sequelize.define('event', {
+  id: {
+    autoIncrement: true,
+    type: Sequelize.INTEGER
+  },
+  description: {
+    type: Sequelize.STRING,
+    notEmpty: true,
+    allowNull: false
+  },
+  lat: {
+    type: Sequelize.DECIMAL,
+    notEmpty: true,
+    allowNull: false
+  },
+  lng: {
+    type: Sequelize.DECIMAL,
+    notEmpty: true,
+    allowNull: false
+  }
 })
 
 // adds foreign key to Event
-User.hasMany(Event);
+Event.belongsTo(User, {
+  foreignKey: {
+    name: 'user_id',
+    allowNull: false
+  }
+})
+
+
+// Sync db
 
 sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection successfully established!');
+  .sync() // no need to drop Users table each time
+  .then(function() {
+    console.log('Database is working!');
   })
-  .catch(err => {
-    console.log('Unable to connect with sequelize:', err);
-  })
-
-  
-sequelize
-  // {force: true} drops Users table & re-creates it
-  .sync({force: true}) // sqlz look over all models defined and gen sql querys under the hood that will turn creates associated tables
-  .then(function(err) {
-    console.log('it worked');
-  }, function(err) {
-    console.log('An err occurred while creating the table:', err);
+  .catch(function(err) {
+    console.log('An err occurred while updating the db:', err);
   });
 
-// const saveUser = function(username);
+
 module.exports = {
-  
+  User,
+  Event
 }
+
