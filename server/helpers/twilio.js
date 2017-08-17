@@ -15,8 +15,8 @@ function sendMessage(phones) {
     from: '+19167392452'
   })
   .then((message) => console.log(message.sid));
-  }); 
-} 
+  });
+}
 
 module.exports = {
   sendMessage,
