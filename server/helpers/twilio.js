@@ -1,6 +1,6 @@
 
 
-const credentials = require('../../config.js');
+const credentials = require('../../config.example.js');
 const accountSid = credentials.twilio.accountSid;
 const authToken = credentials.twilio.authToken;
 const client = require('twilio')(accountSid, authToken);
