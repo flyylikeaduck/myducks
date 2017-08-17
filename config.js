@@ -7,9 +7,9 @@ module.exports = {
     testsPhonesMe: [],
   },
   db: {
-    host: '',
-    username: '',
-    password: '',
-    database: '',
+    host: 'y06qcehxdtkegbeb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    username: 'kozhdg8q5wwppwl4',
+    password: 'iyc9hng6nxu5lbf3',
+    database: 'ri4z6m1xtpg6v89l',
   }
 };

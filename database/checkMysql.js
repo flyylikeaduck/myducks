@@ -1,11 +1,12 @@
 const mysql = require('mysql');
+var config = require('../config.js');
 
 let connection = mysql.createConnection({
-  host: "localhost",
-  user: 'root',
-  password: '',
+  host: config.db.host,
+  user: config.db.username,
+  password: config.db.password,
 });
-
+ 
 // connection.connect(err => {
 //   if (err) {
 //       console.error('Error connecting: ' + err.stack);
@@ -14,7 +15,7 @@ let connection = mysql.createConnection({
 //   console.log('Connected as id: ' + connection.threadId);
 // });
 
-connection.query('CREATE DATABASE IF NOT EXISTS safety_buddies', (err, result) => {
+connection.query(`CREATE DATABASE IF NOT EXISTS ${config.db.database}`, (err, result) => {
       if (err) throw err;
       console.log('Database safety_buddies created');
   });

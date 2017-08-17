@@ -1,8 +1,9 @@
 // const checkMysql = require('./checkMysql.js');
 const Sequelize = require('sequelize');
+const config = require('../config.js');
 
-const sequelize = new Sequelize('safety_buddies', 'root', '', {
-  host: 'localhost',
+const sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
+  host: config.db.host,
   dialect: 'mysql',
   port: 3306
 }); 
@@ -36,7 +37,7 @@ sequelize
   
 sequelize
   // {force: true} drops Users table & re-creates it
-  .sync({force: true}) // sqlz look over all models defined and gen sql querys under the hood that will turn creates associated tables
+  .sync() // sqlz look over all models defined and gen sql querys under the hood that will turn creates associated tables
   .then(function(err) {
     console.log('it worked');
   }, function(err) {
