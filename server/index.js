@@ -16,15 +16,28 @@ let port = process.env.PORT || 3000;
 //Serve public folder at app root URL
 app.use(express.static(__dirname + '/../client/dist'));
 
-
-
 app.get('/', express.static('public'));
 
-app.post('/createUser', (req, res) => {
-req.address
-  db.createUser(req.username, req.address, req.phoneNumber)
-    .then()
+
+app.post('/signup', (req, res) => {
+
+  let username = req.body.username;
+  let address = req.body.address;
+  // Frontend needs to require xxx-xxx-xxxx phonenumber format
+  let phone = '+1' + req.body.phone.split('-').join('');
+  console.log('meow connected to post client! modified PHONE', phone);
+
+  db.createUser(username, address, phone)
+    .then(() => {
+      console.log('quack! saved user');
+      res.send();
+    })
+    .catch(err => {
+      console.log('oops err in server index', err)
+    })
 })
+
+
 
 
 app.post('/event', (req, res) => {
