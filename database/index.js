@@ -1,12 +1,13 @@
 // const checkMysql = require('./checkMysql.js');
 const Sequelize = require('sequelize');
-const config = require('../config.js');
+// const config = require('../config.js');
 
-const sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
-  host: config.db.host,
-  dialect: 'mysql',
-  port: 3306
-}); 
+const sequelize = new Sequelize(process.env.JAWSDB_URL);
+// const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+//   host: process.env.DB_HOST,
+//   dialect: 'mysql',
+//   port: 3306
+// }); 
 
 // creates 'Users' table
 // sequelize automatically adds id, createdAt, and updatedAt cols
