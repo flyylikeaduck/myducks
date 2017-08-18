@@ -1,9 +1,9 @@
 
-
-const credentials = require('../../config.js');
-const accountSid = credentials.twilio.accountSid;
-const authToken = credentials.twilio.authToken;
-const client = require('twilio')(accountSid, authToken);
+// 
+// const credentials = require('../../config.js');
+// const accountSid = credentials.twilio.accountSid;
+// const authToken = credentials.twilio.authToken;
+const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTHTOKEN);
 //Twilio credentials
 
 function sendMessage(phones) {
