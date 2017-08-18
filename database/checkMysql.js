@@ -1,27 +1,17 @@
 const mysql = require('mysql');
-var config = require('../config.js');
 
 let connection = mysql.createConnection({
-  host: config.db.host,
-  user: config.db.username,
-  password: config.db.password,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
 });
  
-// connection.connect(err => {
-//   if (err) {
-//       console.error('Error connecting: ' + err.stack);
-//       return;
-//   }
-//   console.log('Connected as id: ' + connection.threadId);
-// });
-
-connection.query(`CREATE DATABASE IF NOT EXISTS ${config.db.database}`, (err, result) => {
-      if (err) throw err;
-      console.log('Database safety_buddies created');
-  });
-
-connection.end(err => {
-if (err) throw err;
+//In order to create DB in JawsDB
+connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_DATABASE}`, (err, result) => {
+  if (err) throw err;
+  console.log(`Database ${process.env.DB_DATABASE} created`);
 });
 
-// module.exports = connection;
+connection.end(err => {
+  if (err) throw err;
+});
