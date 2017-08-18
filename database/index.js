@@ -1,16 +1,18 @@
 const models = require("./models");
 const Sequelize = require('sequelize');
 
+const sequelize = new Sequelize(process.env.JAWSDB_URL);
+//Or use this method to cnnecto to DB
+// const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+//   host: process.env.DB_HOST,
+//   dialect: 'mysql',
+//   port: 3306
+// }); 
+
 module.exports.getUsers = () => {
   // const checkMysql = require('./checkMysql.js');
   // const config = require('../config.js');
   
-  const sequelize = new Sequelize(process.env.JAWSDB_URL);
-  // const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  //   host: process.env.DB_HOST,
-  //   dialect: 'mysql',
-  //   port: 3306
-  // }); 
 }
 
 module.exports.createUser = (username, address, phone) => {
