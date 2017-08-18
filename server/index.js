@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const checkMysql = require('../database/checkMysql.js');
 const db = require('../database/index.js');

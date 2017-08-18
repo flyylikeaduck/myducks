@@ -1,7 +1,16 @@
 const models = require("./models");
+const Sequelize = require('sequelize');
 
 module.exports.getUsers = () => {
-
+  // const checkMysql = require('./checkMysql.js');
+  // const config = require('../config.js');
+  
+  const sequelize = new Sequelize(process.env.JAWSDB_URL);
+  // const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+  //   host: process.env.DB_HOST,
+  //   dialect: 'mysql',
+  //   port: 3306
+  // }); 
 }
 
 module.exports.createUser = (username, address, phone) => {
@@ -16,6 +25,14 @@ module.exports.createEvent = (lat, long) => {
 
   })
 }
-
+  
+sequelize
+  // {force: true} drops Users table & re-creates it
+  .sync() // sqlz look over all models defined and gen sql querys under the hood that will turn creates associated tables
+  .then(function(err) {
+    console.log('it worked');
+  }, function(err) {
+    console.log('An err occurred while creating the table:', err);
+  });
 
 module.exports.filterByUser
