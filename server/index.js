@@ -1,9 +1,10 @@
+require('dotenv').config()
 const express = require('express');
-// const checkMysql = require('../database/checkMysql.js');
+const checkMysql = require('../database/checkMysql.js');
 const db = require('../database/index.js');
 const bodyParser = require('body-parser');
 const twilio = require('./helpers/twilio.js');
-//
+
 let app = express();
 
 let port = process.env.PORT || 3000;
