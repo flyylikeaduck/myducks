@@ -17,9 +17,9 @@ let User = sequelize.define('user', {
     // unique: true
   },
   // postponegeocoding for now
-  address: {
-    type: Sequelize.STRING
-  },
+  // address: {
+  //   type: Sequelize.STRING
+  // },
   lat: {
     type: Sequelize.DECIMAL,
     notEmpty: true,
@@ -78,9 +78,14 @@ Event.belongsTo(User);
 // Sync db
 
 sequelize
-  .sync() // no need to drop Users table each time
+// drop and re-create for demo purpose
+  .sync({force: true})
   .then(() => {
     console.log('Database is working!');
+    User.bulkCreate([
+      {username: 'kolya', lat: 37.782716, lng: -122.410175, phone: process.env.DB_KOLYANUM},
+      {username: 'flyyduck', lat: 37.4224764, lng: -122.0842499, phone: process.env.DB_FLYYNUM}
+    ])
   })
   .catch(function(err) {
     console.log('An err occurred while updating the db:', err);
