@@ -21,12 +21,8 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.get('/', express.static('public'));
 
 app.get('/users', (req, res) => {
-  // get users from db
-  // send array of users + lat/lng to client
-
   db.getAllUserLocations()
   .then(userLocations => {
-    console.log('users!$$', userLocations)
     res.send(userLocations)
   })
   .catch(err =>
@@ -41,9 +37,7 @@ app.post('/signup', (req, res) => {
   let address = req.body.address;
   // Frontend needs to require xxx-xxx-xxxx phonenumber format
   let phone = '+1' + req.body.phone.split('-').join('');
-  console.log('meow connected to post client! modified PHONE', phone);
 
-// create geocode helper func to Google Maps API
   googleMaps.getGeocode(address)
     .then(response => {
       let lat = response.data.results[0].geometry.location.lat;
