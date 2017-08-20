@@ -25,10 +25,14 @@ app.get('/users', (req, res) => {
   // send array of users + lat/lng to client
 
   db.getAllUserLocations()
-  .then(users => {
-    console.log('users!$$', users)
+  .then(userLocations => {
+    console.log('users!$$', userLocations)
+    res.send(userLocations)
   })
-})
+  .catch(err =>
+    res.status(500).send('something broke in app.get/users!', err)
+  )
+});
 
 
 app.post('/signup', (req, res) => {
@@ -57,7 +61,7 @@ app.post('/signup', (req, res) => {
     .catch(err => {
       console.log('oops err in server index', err)
     })
-})
+});
 
 
 
