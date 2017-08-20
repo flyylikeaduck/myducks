@@ -41,6 +41,16 @@ class Map extends React.Component {
         });
       })
   }
+
+  event(coordinates) {
+    axios.post('http://localhost:3000/event', )
+  }
+
+  event = this.event.bind(this)
+
+  event(event) {
+    console.log(event.latLng);
+  }
   
   render() {
     let markers = this.state.users.map((el, key) => {
@@ -56,8 +66,8 @@ class Map extends React.Component {
         mapElement={
           <div style={{ height: '500px' }} />
         }
-        //onMapLoad={_.noop}
-        //onMapClick={_.noop}
+        // onMapLoad={_.noop}
+        onMapClick={this.event}
         markers={markers}
         //onMarkerRightClick={_.noop} 
       />
