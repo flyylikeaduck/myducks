@@ -21,22 +21,24 @@ let User = sequelize.define('user', {
     type: Sequelize.STRING
   },
   lat: {
-    type: Sequelize.DECIMAL,
-    notEmpty: true,
-    allowNull: false
+    type: Sequelize.FLOAT,
+    allowNull: true,
+    defaultValue: null,
+    validate: { min: -90, max: 90 }
   },
   lng: {
-    type: Sequelize.DECIMAL,
-    notEmpty: true,
-    allowNull: false
+    type: Sequelize.FLOAT,
+    allowNull: true,
+    defaultValue: null,
+    validate: { min: -180, max: 180 }
   },
   // may need email if we use OAUTH
-  email: {
-    type: Sequelize.STRING,
-    validate: {
-      isEmail: true
-    }
-  },
+  // email: {
+  //   type: Sequelize.STRING,
+  //   validate: {
+  //     isEmail: true
+  //   }
+  // },
   phone: {
     type: Sequelize.STRING,
     notEmpty: true,
@@ -78,9 +80,15 @@ Event.belongsTo(User);
 // Sync db
 
 sequelize
-  .sync() // no need to drop Users table each time
+// drop and re-create for demo purpose
+// {force: true}
+  .sync()
   .then(() => {
     console.log('Database is working!');
+    // User.bulkCreate([
+    //   {username: 'kolya', lat: 37.782716, lng: -122.410175, phone: process.env.DB_KOLYANUM},
+    //   {username: 'flyyduck', lat: 37.4224764, lng: -122.0842499, phone: process.env.DB_FLYYNUM}
+    // ])
   })
   .catch(function(err) {
     console.log('An err occurred while updating the db:', err);

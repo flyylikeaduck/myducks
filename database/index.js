@@ -1,23 +1,37 @@
 const models = require("./models");
-const Sequelize = require('sequelize');
 
-module.exports.getUsers = () => {
-
+module.exports.getAllUserLocations = () => {
+  return models.User.findAll()
+  .then(users => {
+    console.log('returned Users!', users)
+    return users.map(user => {
+      let userLocation = {};
+      userLocation['username'] = user.username;
+      userLocation['lat'] = user.lat;
+      userLocation['lng'] = user.lng;
+      return userLocation;
+    })
+  })
 }
 
-module.exports.createUser = (username, address, phone) => {
-  // add '+1 to phone'
+// module.exports.getAllUserNumbers = () => {
+//   return models.User.findAll()
+// }
+
+
+module.exports.createUser = (username, address, lat, lng, phone) => {
   return models.User.create({
-    username, address, phone
+    username, address, lat, lng, phone
   });
 }
 
-module.exports.createEvent = (lat, long) => {
+module.exports.createEvent = (lat, lng) => {
   return models.Event.create({
 
   })
 };
-  
+
+
 module.exports.filterByUser = () => {
 
 };
