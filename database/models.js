@@ -22,14 +22,14 @@ let User = sequelize.define('user', {
   },
   lat: {
     type: Sequelize.FLOAT,
-    allowNull: true,
-    defaultValue: null,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -90, max: 90 }
   },
   lng: {
     type: Sequelize.FLOAT,
-    allowNull: true,
-    defaultValue: null,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -180, max: 180 }
   },
   icon: {
@@ -55,21 +55,21 @@ let Event = sequelize.define('event', {
     notEmpty: true,
     allowNull: false
   },
-  latitude: {
-    type: Sequelize.INTEGER,
-    allowNull: true,
-    defaultValue: null,
+  lat: {
+    type: Sequelize.FLOAT,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -90, max: 90 },
   },
-  longitude: {
-    type: Sequelize.INTEGER,
-    allowNull: true,
-    defaultValue: null,
+  lng: {
+    type: Sequelize.FLOAT,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -180, max: 180 },
   }
 });
 
-Event.belongsTo(User);
+// Event.belongsTo(User);
 
 // adds foreign key to Event
 // Event.belongsTo(User, {
