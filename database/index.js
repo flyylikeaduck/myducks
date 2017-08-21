@@ -10,13 +10,18 @@ module.exports.getAllUserLocations = () => {
       userLocation['lng'] = user.lng;
       userLocation['icon'] = user.icon;
       return userLocation;
-    })
-  })
+    });
+  });
 }
 
-// module.exports.getAllUserNumbers = () => {
-//   return models.User.findAll()
-// }
+module.exports.getAllUserNumbers = () => {
+  return models.User.findAll()
+  .then(users => {
+    return users.map(user => {
+      return user.phone;
+    });
+  });
+}
 
 
 module.exports.createUser = (username, address, lat, lng, icon, phone) => {
@@ -25,10 +30,10 @@ module.exports.createUser = (username, address, lat, lng, icon, phone) => {
   });
 }
 
-module.exports.createEvent = (lat, lng) => {
+module.exports.createEvent = (description, lat, lng) => {
   return models.Event.create({
-
-  })
+    description, lat, lng
+  });
 };
 
 
