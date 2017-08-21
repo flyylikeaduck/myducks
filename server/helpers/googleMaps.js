@@ -8,5 +8,14 @@ module.exports.getGeocode = (address) => {
     'key': `${process.env.GOOGLE_API}`
   }
 
-  return axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {params})
+  return axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {params});
+}
+
+module.exports.getReverseGeocode = (lat, lng) => {
+  let params = {
+    'latlng': `${lat},${lng}`,
+    'key': `${process.env.GOOGLE_API}`
+  }
+
+  return axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {params});
 }
