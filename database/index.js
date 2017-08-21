@@ -3,10 +3,9 @@ const models = require("./models");
 module.exports.getAllUserLocations = () => {
   return models.User.findAll()
   .then(users => {
-    console.log('returned Users!', users)
     return users.map(user => {
       let userLocation = {};
-      userLocation['username'] = user.username;
+      // userLocation['username'] = user.username;
       userLocation['lat'] = user.lat;
       userLocation['lng'] = user.lng;
       userLocation['icon'] = user.icon;

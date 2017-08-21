@@ -23,6 +23,7 @@ app.get('/', express.static('public'));
 app.get('/users', (req, res) => {
   db.getAllUserLocations()
   .then(userLocations => {
+    console.log('userLocations!! $$', userLocations)
     res.send(userLocations)
   })
   .catch(err =>
@@ -37,6 +38,7 @@ app.post('/signup', (req, res) => {
   let address = req.body.address;
   // Frontend needs to require xxx-xxx-xxxx phonenumber format
   let phone = '+1' + req.body.phone.split('-').join('');
+  let icon = 'http://i.imgur.com/1SPcmdd.png';
 
   googleMaps.getGeocode(address)
     .then(response => {
