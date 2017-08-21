@@ -66,20 +66,18 @@ app.post('/event', (req, res) => {
   // let eventType = req.body.eventType;
   let description = 'danger';
   let address = '';
+  let eventTime = new Date().toString().slice(0, -18);
 
-  // take lat + lng, create helper googleMaps API func for reverse geocode
   googleMaps.getReverseGeocode(lat, lng)
     .then(response => {
       address = response.data.results[0].formatted_address
-
-      console.log('meow reversed geocode address!', address)
       db.createEvent(description, lat, lng, address);
     })
     .then(() =>
       db.getAllUserNumbers()
     )
     .then(userNums => {
-     twilio.sendMessage(userNums, address);
+     twilio.sendMessage(userNums, address, eventTime);
     })
     .then(() => {
       console.log('sent messages to users!');
