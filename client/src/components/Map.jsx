@@ -26,19 +26,18 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [
-        {lat: 37.783327, lng:-122.413554, icon: 'http://i95.fastpic.ru/big/2017/0819/a3/9ad0ad417641864026cc88372c9c70a3.jpg'}, 
-        {lat: 37.782852, lng:-122.409541, icon: 'http://i95.fastpic.ru/big/2017/0819/26/b5dd50ffbe055dd8412c984a36933926.jpg'}],
+      users: [],
+      events: [],
     };
     
-    event = this.event.bind(this);
+    this.event = this.event.bind(this);
   }
 
   componentDidMount() {
     axios.get('http://localhost:3000/users')
       .then(res => {
-        let users = res.data.users;
-        console.log(users);
+        let users = res.data;
+        console.log(res);
         this.setState({
           users,
         });
@@ -48,6 +47,14 @@ class Map extends React.Component {
   event(event) {
     let lat = event.latLng.lat();
     let lng = event.latLng.lng();
+
+    let newArray = this.state.users.slice();
+    let newEvent = {lat, lng}
+    newArray.push({lat, lng, icon: 'http://i92.fastpic.ru/big/2017/0821/b9/d1115d93590b7d53de7cfe074b298eb9.png'});
+    
+    this.setState({
+      users: newArray
+    });
     
     axios.post('http://localhost:3000/event', {lat: lat, lng: lng})
       .then(response => {
