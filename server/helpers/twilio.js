@@ -8,7 +8,7 @@ function sendMessage(phones, address, eventTime) {
   client.messages.create({
     body: `Careful! Dangerous event at ${slicedAddress} on ${eventTime}`,
     to: `${phone}`,
-    from: '+19167392452'
+    from: `${process.env.TWILIO_NUM}`
   })
   .then((message) => console.log(message.sid));
   });
