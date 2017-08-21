@@ -22,15 +22,18 @@ let User = sequelize.define('user', {
   },
   lat: {
     type: Sequelize.FLOAT,
-    allowNull: true,
-    defaultValue: null,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -90, max: 90 }
   },
   lng: {
     type: Sequelize.FLOAT,
-    allowNull: true,
-    defaultValue: null,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -180, max: 180 }
+  },
+  icon: {
+    type: Sequelize.STRING
   },
   // may need email if we use OAUTH
   // email: {
@@ -52,21 +55,21 @@ let Event = sequelize.define('event', {
     notEmpty: true,
     allowNull: false
   },
-  latitude: {
-    type: Sequelize.INTEGER,
-    allowNull: true,
-    defaultValue: null,
+  lat: {
+    type: Sequelize.FLOAT,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -90, max: 90 },
   },
-  longitude: {
-    type: Sequelize.INTEGER,
-    allowNull: true,
-    defaultValue: null,
+  lng: {
+    type: Sequelize.FLOAT,
+    notEmpty: true,
+    allowNull: false,
     validate: { min: -180, max: 180 },
   }
 });
 
-Event.belongsTo(User);
+// Event.belongsTo(User);
 
 // adds foreign key to Event
 // Event.belongsTo(User, {
@@ -86,9 +89,9 @@ sequelize
   .then(() => {
     console.log('Database is working!');
     // User.bulkCreate([
-    //   {username: 'kolya', lat: 37.782716, lng: -122.410175, phone: process.env.DB_KOLYANUM},
-    //   {username: 'flyyduck', lat: 37.4224764, lng: -122.0842499, phone: process.env.DB_FLYYNUM}
-    // ])
+    //   {username: 'kolya', address: '986 Market St, San Francisco, CA 94102', lat: 37.782550, lng: -122.409950, icon: 'http://i95.fastpic.ru/big/2017/0819/a3/9ad0ad417641864026cc88372c9c70a3.jpg', phone: process.env.DB_KOLYANUM},
+    //   {username: 'flyyduck', address: '201 Berry St, San Francisco, CA 94158', lat: 37.775538, lng: -122.393370, icon: 'http://i95.fastpic.ru/big/2017/0819/26/b5dd50ffbe055dd8412c984a36933926.jpg', phone: process.env.DB_FLYYNUM}
+    // ]);
   })
   .catch(function(err) {
     console.log('An err occurred while updating the db:', err);
