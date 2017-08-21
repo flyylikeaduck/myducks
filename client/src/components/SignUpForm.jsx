@@ -24,13 +24,14 @@ export default class SignUpForm extends React.Component {
     axios.post('/signup', {
       username: this.state.username,
       address: this.state.address,
-      // location: {
-      //   lat : 37.4224764,
-      //   lng : -122.0842499
-      // },
       phone: this.state.phoneNumber
     })
-      .then(response => console.log('yay, got response', response))
+      .then(res => {
+        console.log('yay, got response', res.data)
+        let users = res.data
+        this.props.handleUsersUpdate(users)
+
+      })
       .catch(error => console.log('oops error', error));
   };
 

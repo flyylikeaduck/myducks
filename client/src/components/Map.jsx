@@ -26,7 +26,6 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
       events: [],
     };
 
@@ -36,11 +35,13 @@ class Map extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:3000/users')
       .then(res => {
-        let users = res.data;
-        console.log(res);
-        this.setState({
-          users,
-        });
+        this.props.handleUsersUpdate(res.data);
+        console.log('users from map.jsx!!', this.props.users)
+        // let users = res.data;
+        // console.log(res);
+        // this.setState({
+        //   users,
+        // });
       })
   }
 
@@ -48,7 +49,7 @@ class Map extends React.Component {
     let lat = event.latLng.lat();
     let lng = event.latLng.lng();
 
-    let newArray = this.state.users.slice();
+    let newArray = this.props.users.slice();
     let newEvent = {lat, lng}
     newArray.push({lat, lng, icon: 'http://i92.fastpic.ru/big/2017/0821/b9/d1115d93590b7d53de7cfe074b298eb9.png'});
 
@@ -66,7 +67,8 @@ class Map extends React.Component {
   };
 
   render() {
-    let markers = this.state.users.map((el, key) => {
+    console.log('TESTING RENDER USERS', this.props.users)
+    let markers = this.props.users.map((el, key) => {
         return {icon: el.icon, key: key, lat: el.lat, lng: el.lng};
     });
     console.log('markers', markers);
