@@ -45,13 +45,13 @@ app.post('/signup', (req, res) => {
       let lng = response.data.results[0].geometry.location.lng;
       db.createUser(username, address, lat, lng, icon, phone)
     })
-    // .then(() => {
-    //   console.log('quack! saved user');
-    //   db.getAllUserLocations()
-    // })
     .then(() => {
-      console.log('saved user');
-      res.send();
+      console.log('quack! saved user');
+      db.getAllUserLocations()
+        .then(userLocations => {
+          console.log('$$$MEOW USERLOCS', userLocations)
+          res.send(userLocations)
+        })
     })
     .catch(err => {
       console.log('oops err in server index', err)
