@@ -29,7 +29,7 @@ class Map extends React.Component {
       users: [],
       events: [],
     };
-    
+
     this.event = this.event.bind(this);
   }
 
@@ -51,11 +51,11 @@ class Map extends React.Component {
     let newArray = this.state.users.slice();
     let newEvent = {lat, lng}
     newArray.push({lat, lng, icon: 'http://i92.fastpic.ru/big/2017/0821/b9/d1115d93590b7d53de7cfe074b298eb9.png'});
-    
+
     this.setState({
       users: newArray
     });
-    
+
     axios.post('http://localhost:3000/event', {lat: lat, lng: lng})
       .then(response => {
         console.log(response);
@@ -69,8 +69,8 @@ class Map extends React.Component {
     let markers = this.state.users.map((el, key) => {
         return {icon: el.icon, key: key, lat: el.lat, lng: el.lng};
     });
-    console.log(markers);
-    
+    console.log('markers', markers);
+
     return (
       <GettingStartedGoogleMap
         containerElement={
@@ -82,7 +82,7 @@ class Map extends React.Component {
         // onMapLoad={_.noop}
         onMapClick={this.event}
         markers={markers}
-        //onMarkerRightClick={_.noop} 
+        //onMarkerRightClick={_.noop}
       />
     );
   }
