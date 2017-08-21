@@ -34,7 +34,7 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/users')
+    axios.get('/users')
       .then(res => {
         let users = res.data;
         console.log(res);
@@ -55,8 +55,8 @@ class Map extends React.Component {
     this.setState({
       users: newArray
     });
-
-    axios.post('http://localhost:3000/event', {lat: lat, lng: lng})
+    
+    axios.post('/event', {lat: lat, lng: lng})
       .then(response => {
         console.log(response);
       })
