@@ -64,11 +64,11 @@ app.post('/event', (req, res) => {
   let lat = req.query.latitude;
   let lng = req.query.longitude;
   let eventType = req.query.eventType;
-
+   
   // save event to db
   // then getUsers numbers (array)
   // call twilio sms helper func
-  //
+  // 
 
 });
 
