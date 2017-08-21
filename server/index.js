@@ -42,14 +42,14 @@ app.post('/signup', (req, res) => {
     .then(response => {
       let lat = response.data.results[0].geometry.location.lat;
       let lng = response.data.results[0].geometry.location.lng;
-      db.createUser(username, address, lat, lng, phone)
+      db.createUser(username, address, lat, lng, icon, phone)
     })
     // .then(() => {
     //   console.log('quack! saved user');
     //   db.getAllUserLocations()
     // })
     .then(() => {
-      console.log('quack! saved user');
+      console.log('saved user');
       res.send();
     })
     .catch(err => {

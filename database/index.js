@@ -9,6 +9,7 @@ module.exports.getAllUserLocations = () => {
       userLocation['username'] = user.username;
       userLocation['lat'] = user.lat;
       userLocation['lng'] = user.lng;
+      userLocation['icon'] = user.icon;
       return userLocation;
     })
   })
@@ -19,9 +20,9 @@ module.exports.getAllUserLocations = () => {
 // }
 
 
-module.exports.createUser = (username, address, lat, lng, phone) => {
+module.exports.createUser = (username, address, lat, lng, icon, phone) => {
   return models.User.create({
-    username, address, lat, lng, phone
+    username, address, lat, lng, icon, phone
   });
 }
 
