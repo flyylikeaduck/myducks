@@ -66,6 +66,9 @@ let Event = sequelize.define('event', {
     notEmpty: true,
     allowNull: false,
     validate: { min: -180, max: 180 },
+  },
+  address: {
+    type: Sequelize.STRING
   }
 });
 

@@ -65,14 +65,19 @@ app.post('/event', (req, res) => {
   // TODO: frontend sends   customized event reports
   // let eventType = req.body.eventType;
   let description = 'danger';
+  let address = '';
+  let eventTime = new Date().toString().slice(0, -18);
 
-  db.createEvent(description, lat, lng)
+  googleMaps.getReverseGeocode(lat, lng)
+    .then(response => {
+      address = response.data.results[0].formatted_address
+      db.createEvent(description, lat, lng, address);
+    })
     .then(() =>
       db.getAllUserNumbers()
     )
     .then(userNums => {
-      console.log('userNums array!!', userNums)
-      twilio.sendMessage(userNums);
+     twilio.sendMessage(userNums, address, eventTime);
     })
     .then(() => {
       console.log('sent messages to users!');
