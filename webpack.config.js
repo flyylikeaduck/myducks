@@ -23,8 +23,6 @@ module.exports = {
     ]
   },
   resolveLoader: {
-      modulesDirectories: [
-          '/users/path/a/node_modules'
-      ]
-  },
+    root: path.join(__dirname, 'node_modules')
+  }
 };
